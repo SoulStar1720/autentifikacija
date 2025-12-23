@@ -10,7 +10,6 @@ $usersData = json_decode($usersString, true);
 if (!is_array($usersData)) {
     $usersData = [];
 }
-
 /* ===================== ADD USER ===================== */
 if ($command === "add") {
 
@@ -20,15 +19,11 @@ if ($command === "add") {
     }
 
     echo "Password: ";
-    //system('stty -echo'); //sakriva pisanje lozinki u terminalu, ko na linuxu, ne radi zato što powershell ne podržava ovu komanud
     $pass1 = trim(fgets(STDIN));//STDIN = standardni ulaz → ono što korisnik tipka u terminalu, fgets(STDIN) = čita jedan redak koji je korisnik upisao,trim() = uklanja ENTER (novi red) i praznine s početka i kraja
-    //system('stty echo'); //vrača pisanje
     echo "\n";
 
     echo "Repeat Password: ";
-    //system('stty -echo');
     $pass2 = trim(fgets(STDIN));
-    //system('stty echo');
     echo "\n";
 
     if ($pass1 !== $pass2) {
@@ -38,12 +33,11 @@ if ($command === "add") {
 
     $usersData[$username] = [
         "password" => password_hash($pass1, PASSWORD_DEFAULT),
-        "force_password_change" => true
+        "force_password_change" => true //mora biti true ako želimo da radi forsiranje promjene lozinke
     ];
 
     echo "User successfully added.\n";
 }
-
 /* ===================== CHANGE PASSWORD ===================== */
 elseif ($command === "passwd") {
 
@@ -53,15 +47,11 @@ elseif ($command === "passwd") {
     }
 
     echo "Password: ";
-    //system('stty -echo');
     $pass1 = trim(fgets(STDIN));
-    //system('stty echo');
     echo "\n";
 
     echo "Repeat Password: ";
-    //system('stty -echo');
     $pass2 = trim(fgets(STDIN));
-    //system('stty echo');
     echo "\n";
 
     if ($pass1 !== $pass2) {
@@ -74,7 +64,6 @@ elseif ($command === "passwd") {
 
     echo "Password change successful.\n";
 }
-
 /* ===================== FORCE PASSWORD CHANGE ===================== */
 elseif ($command === "forcepass") {
 
@@ -87,7 +76,6 @@ elseif ($command === "forcepass") {
 
     echo "User will be requested to change password on next login.\n";
 }
-
 /* ===================== DELETE USER ===================== */
 elseif ($command === "del") {
 
@@ -100,12 +88,10 @@ elseif ($command === "del") {
 
     echo "User successfully removed.\n";
 }
-
 else {
     echo "Unknown command.\n";
     exit;
 }
-
 // spremi natrag u users.json
 file_put_contents(
     __DIR__.'/users.json',
