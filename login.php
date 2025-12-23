@@ -11,7 +11,6 @@ if (!is_array($usersData) || !isset($usersData[$username])) {
     exit;
 }
 
-// unos lozinke (VIDLJIV na Windowsu)
 echo "Password: ";
 $password = trim(fgets(STDIN));
 
