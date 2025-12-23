@@ -20,7 +20,7 @@ if ($command === "add") {
     }
 
     echo "Password: ";
-    //system('stty -echo'); //sakriva pisanje lozinki u terminalu, ko na linuxu
+    //system('stty -echo'); //sakriva pisanje lozinki u terminalu, ko na linuxu, ne radi zato što powershell ne podržava ovu komanud
     $pass1 = trim(fgets(STDIN));//STDIN = standardni ulaz → ono što korisnik tipka u terminalu, fgets(STDIN) = čita jedan redak koji je korisnik upisao,trim() = uklanja ENTER (novi red) i praznine s početka i kraja
     //system('stty echo'); //vrača pisanje
     echo "\n";
@@ -38,7 +38,7 @@ if ($command === "add") {
 
     $usersData[$username] = [
         "password" => password_hash($pass1, PASSWORD_DEFAULT),
-        "force_password_change" => false
+        "force_password_change" => true
     ];
 
     echo "User successfully added.\n";

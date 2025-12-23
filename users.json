@@ -1,10 +1,10 @@
 {
-    "lena": {
-        "password": "$2y$10$HjwyTUZbCSp1po0K.2gQaeHSx6l3gl.tVBgwB6ETNUSyOKFbpLT.q",
-        "force_password_change": false
-    },
     "imilic": {
         "password": "$2y$10$RQo3cffYkgWt9UQXkyx3e.zn.NeYa2ptkNqyHG8RG3PCgcfu75Eoy",
+        "force_password_change": false
+    },
+    "lena": {
+        "password": "$2y$10$8i4DsBNWwTNtGuPoBaMLK.CWU.ipz6.so5lQXjA3oEMybstd2hmui",
         "force_password_change": false
     }
 }
